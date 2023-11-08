@@ -1,31 +1,29 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33213.308
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Текстови файлове 2 зад", "Текстови файлове 2 зад\Текстови файлове 2 зад.vcxproj", "{E297796E-5749-426B-AD1B-DC2EB4ECD96C}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E297796E-5749-426B-AD1B-DC2EB4ECD96C}.Debug|x64.ActiveCfg = Debug|x64
-		{E297796E-5749-426B-AD1B-DC2EB4ECD96C}.Debug|x64.Build.0 = Debug|x64
-		{E297796E-5749-426B-AD1B-DC2EB4ECD96C}.Debug|x86.ActiveCfg = Debug|Win32
-		{E297796E-5749-426B-AD1B-DC2EB4ECD96C}.Debug|x86.Build.0 = Debug|Win32
-		{E297796E-5749-426B-AD1B-DC2EB4ECD96C}.Release|x64.ActiveCfg = Release|x64
-		{E297796E-5749-426B-AD1B-DC2EB4ECD96C}.Release|x64.Build.0 = Release|x64
-		{E297796E-5749-426B-AD1B-DC2EB4ECD96C}.Release|x86.ActiveCfg = Release|Win32
-		{E297796E-5749-426B-AD1B-DC2EB4ECD96C}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2516F4FD-EA28-47E1-9250-93FDBF78E560}
-	EndGlobalSection
-EndGlobal
+/* Напишете програма, която чете от клавиатурата текст(до въвеждане на '.')
+и го записва в текстов файл */
+
+#include<iostream>
+#include<fstream>
+#include<string>
+using namespace std;
+
+ofstream newfile;
+
+void write(string name) {
+	char ch;
+	newfile.open(name);
+	if (!newfile.is_open()) {
+		cout << "Error!\n";
+		return;
+	}
+	do {
+		cin.get(ch);
+		newfile << ch;
+	} while (ch != '.');
+}
+
+int main() {
+	string name;
+	cout << "Enter file name: "; getline(cin, name);
+	write(name);
+	return 0;
+}
